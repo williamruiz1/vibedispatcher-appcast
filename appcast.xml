@@ -7,6 +7,21 @@
         <link>https://williamruiz1.github.io/vibedispatcher-appcast/appcast.xml</link>
         <description>Updates for VibeDispatcher — voice-driven command center for macOS.</description>
         <language>en</language>
-        <!-- Items added by scripts/release.sh during release cut. -->
+        <item>
+            <title>0.0.1</title>
+            <pubDate>Sun, 10 May 2026 06:12:46 +0200</pubDate>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>0.0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description><![CDATA[
+                <p>Fresh-start rebuild absorbing Claude Code Jarvis V into VibeDispatcher.</p>
+                <p>Highlights: Terminal Voice (local Piper Atlas voice for Claude Code CLI), Main Window with Sessions/Voice/Beacon/Settings tabs, Ice-style permissions onboarding, live transcript pane with hallucination filter, all API keys in macOS Keychain, Sparkle EdDSA keypair rotated, cloudflared SHA-256 pinned.</p>
+                <p>Pre-1.0 versioning intentional — VD is in active rebuild for v2.0+. The 0.0.x series signals "anything can break" while we shake out the absorption + UI consolidation.</p>
+                <p>Full release notes: <a href="https://github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.1">github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.1</a></p>
+                <p><strong>Note:</strong> signed but NOT notarized in this release (notarytool credential profile setup pending). On first launch you'll get a Gatekeeper warning — right-click → Open to bypass once.</p>
+            ]]></description>
+            <enclosure url="https://github.com/williamruiz1/vibedispatcher/releases/download/v0.0.1/VibeDispatcher-0.0.1.dmg" length="55889127" type="application/octet-stream" sparkle:edSignature="3xdMvmLIL1vlfHUv5nyu5bw7eBXMCfe1CwG7vPTuuvFypuIpv+71RVZmkuwwjw2wVdXR9XdeMLUmGmAe74oQAA=="/>
+        </item>
     </channel>
 </rss>
