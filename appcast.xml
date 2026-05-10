@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     version="2.0">
+    <channel>
+        <title>VibeDispatcher</title>
+        <link>https://williamruiz1.github.io/vibedispatcher-appcast/appcast.xml</link>
+        <description>Updates for VibeDispatcher — voice-driven command center for macOS.</description>
+        <language>en</language>
+        <!-- Items added by scripts/release.sh during release cut. -->
+    </channel>
+</rss>
