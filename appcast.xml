@@ -8,6 +8,20 @@
         <description>Updates for VibeDispatcher — voice-driven command center for macOS.</description>
         <language>en</language>
         <item>
+            <title>0.0.2</title>
+            <pubDate>Sun, 10 May 2026 06:33:18 +0200</pubDate>
+            <sparkle:version>6</sparkle:version>
+            <sparkle:shortVersionString>0.0.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description><![CDATA[
+                <p>Notarized rebuild — same code as 0.0.1, but Apple notarization now passes. No more "can't verify the developer" warning on first launch.</p>
+                <p>Sparkle should pull this update silently if you're already on 0.0.1.</p>
+                <p>Full release notes: <a href="https://github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.2">github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.2</a></p>
+            ]]></description>
+            <enclosure url="https://github.com/williamruiz1/vibedispatcher/releases/download/v0.0.2/VibeDispatcher-0.0.2.dmg" length="55960990" type="application/octet-stream" sparkle:edSignature="5RICJjlZhWUKAF8p/TlPh4m6styqV4NdnGIAgm1fSGDQxyVQVFte3NMZZIfpCXcNckhvb2RyTvreLYmYeruSCQ=="/>
+        </item>
+        <item>
             <title>0.0.1</title>
             <pubDate>Sun, 10 May 2026 06:12:46 +0200</pubDate>
             <sparkle:version>4</sparkle:version>
