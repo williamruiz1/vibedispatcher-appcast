@@ -8,6 +8,27 @@
         <description>Updates for VibeDispatcher — voice-driven command center for macOS.</description>
         <language>en</language>
         <item>
+            <title>0.0.6</title>
+            <pubDate>Tue, 12 May 2026 09:23:37 +0200</pubDate>
+            <sparkle:version>13</sparkle:version>
+            <sparkle:shortVersionString>0.0.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description><![CDATA[
+<p><strong>v0.0.6 — Happy absorption Phases 1+2+3+4 + release pipeline fix.</strong></p>
+<p>This release lands the full Happy-pairing-and-voice absorption (mac + iOS + relay + ConvAI engine) and fixes the silent-failure release pipeline that caused v0.0.3 / v0.0.4 / v0.0.5 to ship without auto-update prompts.</p>
+<ul>
+  <li><strong>Phase 4 — ConvAI engine</strong> for Mac TTS stack. Optional ElevenLabs conversational-AI voice engine selectable via <code>config.yaml: convai_enabled + convai_agent_id</code>. Onboarding alert on first launch when configured. Falls back to native voice on 402/451.</li>
+  <li><strong>Phase 1 — Voice routes on relay</strong> (token issuance + ElevenLabs circuit breakers + BIPA / IL geo-block).</li>
+  <li><strong>Phase 2 — Server libsodium</strong> (pairing primitive + socket.io broadcast + Expo push). Server-side; users see ConvAI option in VD.</li>
+  <li><strong>Phase 3 — Beacon iOS</strong> pairing UI + WireKit (libsodium) + APNs registration. Sideloaded to iPhone for testing; pairing-flow plumbing landed.</li>
+  <li><strong>Release pipeline hardening</strong> (Issue #643). <code>scripts/release.sh</code> now mandatorily pushes the canonical appcast at the end of release; build FAILS if push fails. New CI workflow <code>release-appcast-verify.yml</code> double-checks the published appcast within 5 min of release publish. TRAPS §7 documents the Sparkle "you're ahead" silent-failure mode this fix prevents.</li>
+</ul>
+<p>Full release notes: <a href="https://github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.6">github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.6</a></p>
+            ]]></description>
+            <enclosure url="https://github.com/williamruiz1/vibedispatcher/releases/download/v0.0.6/VibeDispatcher-0.0.6.dmg" length="55987321" type="application/octet-stream" sparkle:edSignature="2myNGiziugr45JPlx1qfEvCE3lyzC4PEBRaTvCeMwh25nXY4JKTy4nCQ7HtbVLAku8c9SyW/GZPdRQeCtLcqCA=="/>
+        </item>
+        <item>
             <title>0.0.2</title>
             <pubDate>Sun, 10 May 2026 06:33:18 +0200</pubDate>
             <sparkle:version>6</sparkle:version>
