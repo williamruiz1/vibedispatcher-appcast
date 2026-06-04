@@ -7,18 +7,11 @@
         <link>https://williamruiz1.github.io/vibedispatcher-appcast/appcast.xml</link>
         <description>Updates for VibeDispatcher — voice-driven command center for macOS.</description>
         <language>en</language>
-        <item>
-            <title>0.0.7</title>
-            <pubDate>Wed, 20 May 2026 06:04:24 +0100</pubDate>
-            <sparkle:version>14</sparkle:version>
-            <sparkle:shortVersionString>0.0.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description><![CDATA[
-<p>Release v0.0.7. Full notes: <a href="https://github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.7">github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.7</a></p>
-            ]]></description>
-            <enclosure url="https://github.com/williamruiz1/vibedispatcher/releases/download/v0.0.7/VibeDispatcher-0.0.7.dmg" length="74475382" type="application/octet-stream" sparkle:edSignature="K827ftFU9DlEpUr9oK+GctgESGQajM6ypCFCctxubEu7bp3GgpISZdL0jEPNhNGH8pwp5I8tLijfAHV7NbN4CA=="/>
-        </item>
+        <!-- 0.0.7 entry retracted 2026-06-04: it advertised a DMG that was never
+             published (download 404'd), so every updater check failed with
+             "Update Error". Re-add ONLY when the v0.0.7 release DMG is actually
+             published. Guard: never advertise a release whose enclosure URL 404s
+             (see appcast-integrity-protocol). -->
         <item>
             <title>0.0.6</title>
             <pubDate>Tue, 12 May 2026 09:23:37 +0200</pubDate>
