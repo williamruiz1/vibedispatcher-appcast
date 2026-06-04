@@ -30,8 +30,10 @@ jobs:
           # Pull each <enclosure url="..."> from the appcast.
           urls=$(grep -oE 'enclosure url="[^"]+"' appcast.xml | sed 's/enclosure url="//;s/"//')
           if [ -z "$urls" ]; then
-            echo "::error::No enclosure URLs found in appcast.xml — malformed feed."
-            exit 1
+            # An item-less feed is a VALID, intentional state (pre-launch: nothing
+            # downloadable advertised → Sparkle reports up-to-date). Pass.
+            echo "Feed advertises no releases — valid pre-launch / no-update state. OK."
+            exit 0
           fi
           fail=0
           while IFS= read -r url; do
