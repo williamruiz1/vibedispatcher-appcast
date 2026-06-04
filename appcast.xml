@@ -7,61 +7,22 @@
         <link>https://williamruiz1.github.io/vibedispatcher-appcast/appcast.xml</link>
         <description>Updates for VibeDispatcher — voice-driven command center for macOS.</description>
         <language>en</language>
-        <!-- 0.0.7 entry retracted 2026-06-04: it advertised a DMG that was never
-             published (download 404'd), so every updater check failed with
-             "Update Error". Re-add ONLY when the v0.0.7 release DMG is actually
-             published. Guard: never advertise a release whose enclosure URL 404s
-             (see appcast-integrity-protocol). -->
-        <item>
-            <title>0.0.6</title>
-            <pubDate>Tue, 12 May 2026 09:23:37 +0200</pubDate>
-            <sparkle:version>13</sparkle:version>
-            <sparkle:shortVersionString>0.0.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description><![CDATA[
-<p><strong>v0.0.6 — Happy absorption Phases 1+2+3+4 + release pipeline fix.</strong></p>
-<p>This release lands the full Happy-pairing-and-voice absorption (mac + iOS + relay + ConvAI engine) and fixes the silent-failure release pipeline that caused v0.0.3 / v0.0.4 / v0.0.5 to ship without auto-update prompts.</p>
-<ul>
-  <li><strong>Phase 4 — ConvAI engine</strong> for Mac TTS stack. Optional ElevenLabs conversational-AI voice engine selectable via <code>config.yaml: convai_enabled + convai_agent_id</code>. Onboarding alert on first launch when configured. Falls back to native voice on 402/451.</li>
-  <li><strong>Phase 1 — Voice routes on relay</strong> (token issuance + ElevenLabs circuit breakers + BIPA / IL geo-block).</li>
-  <li><strong>Phase 2 — Server libsodium</strong> (pairing primitive + socket.io broadcast + Expo push). Server-side; users see ConvAI option in VD.</li>
-  <li><strong>Phase 3 — Beacon iOS</strong> pairing UI + WireKit (libsodium) + APNs registration. Sideloaded to iPhone for testing; pairing-flow plumbing landed.</li>
-  <li><strong>Release pipeline hardening</strong> (Issue #643). <code>scripts/release.sh</code> now mandatorily pushes the canonical appcast at the end of release; build FAILS if push fails. New CI workflow <code>release-appcast-verify.yml</code> double-checks the published appcast within 5 min of release publish. TRAPS §7 documents the Sparkle "you're ahead" silent-failure mode this fix prevents.</li>
-</ul>
-<p>Full release notes: <a href="https://github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.6">github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.6</a></p>
-            ]]></description>
-            <enclosure url="https://github.com/williamruiz1/vibedispatcher/releases/download/v0.0.6/VibeDispatcher-0.0.6.dmg" length="55987321" type="application/octet-stream" sparkle:edSignature="2myNGiziugr45JPlx1qfEvCE3lyzC4PEBRaTvCeMwh25nXY4JKTy4nCQ7HtbVLAku8c9SyW/GZPdRQeCtLcqCA=="/>
-        </item>
-        <item>
-            <title>0.0.2</title>
-            <pubDate>Sun, 10 May 2026 06:33:18 +0200</pubDate>
-            <sparkle:version>6</sparkle:version>
-            <sparkle:shortVersionString>0.0.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description><![CDATA[
-                <p>Notarized rebuild — same code as 0.0.1, but Apple notarization now passes. No more "can't verify the developer" warning on first launch.</p>
-                <p>Sparkle should pull this update silently if you're already on 0.0.1.</p>
-                <p>Full release notes: <a href="https://github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.2">github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.2</a></p>
-            ]]></description>
-            <enclosure url="https://github.com/williamruiz1/vibedispatcher/releases/download/v0.0.2/VibeDispatcher-0.0.2.dmg" length="55960990" type="application/octet-stream" sparkle:edSignature="5RICJjlZhWUKAF8p/TlPh4m6styqV4NdnGIAgm1fSGDQxyVQVFte3NMZZIfpCXcNckhvb2RyTvreLYmYeruSCQ=="/>
-        </item>
-        <item>
-            <title>0.0.1</title>
-            <pubDate>Sun, 10 May 2026 06:12:46 +0200</pubDate>
-            <sparkle:version>4</sparkle:version>
-            <sparkle:shortVersionString>0.0.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description><![CDATA[
-                <p>Fresh-start rebuild absorbing Claude Code Jarvis V into VibeDispatcher.</p>
-                <p>Highlights: Terminal Voice (local Piper Atlas voice for Claude Code CLI), Main Window with Sessions/Voice/Beacon/Settings tabs, Ice-style permissions onboarding, live transcript pane with hallucination filter, all API keys in macOS Keychain, Sparkle EdDSA keypair rotated, cloudflared SHA-256 pinned.</p>
-                <p>Pre-1.0 versioning intentional — VD is in active rebuild for v2.0+. The 0.0.x series signals "anything can break" while we shake out the absorption + UI consolidation.</p>
-                <p>Full release notes: <a href="https://github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.1">github.com/williamruiz1/vibedispatcher/releases/tag/v0.0.1</a></p>
-                <p><strong>Note:</strong> signed but NOT notarized in this release (notarytool credential profile setup pending). On first launch you'll get a Gatekeeper warning — right-click → Open to bypass once.</p>
-            ]]></description>
-            <enclosure url="https://github.com/williamruiz1/vibedispatcher/releases/download/v0.0.1/VibeDispatcher-0.0.1.dmg" length="55889127" type="application/octet-stream" sparkle:edSignature="3xdMvmLIL1vlfHUv5nyu5bw7eBXMCfe1CwG7vPTuuvFypuIpv+71RVZmkuwwjw2wVdXR9XdeMLUmGmAe74oQAA=="/>
-        </item>
+        <!-- ════════════════════════════════════════════════════════════════
+             FEED CLEARED 2026-06-04. Every prior entry (0.0.7 / 0.0.6 / 0.0.2 /
+             0.0.1) advertised a release whose .dmg ASSET 404'd — the GitHub
+             release tags exist but the DMG assets were never published (or were
+             removed). So Sparkle saw a "newer" version, tried to download it,
+             and every launch failed with "Update Error". VibeDispatcher is
+             pre-launch; NO downloadable release actually exists yet.
+
+             An item-less channel = Sparkle reports "you're up to date" and never
+             attempts a download → no more Update Error.
+
+             To ship a real release: publish the signed+notarized DMG as a
+             release asset FIRST, confirm its download URL returns 200, THEN add
+             its <item> here. CI guard `.github/workflows/appcast-integrity.yml`
+             FAILS if any advertised enclosure URL does not resolve, so a phantom
+             release can never silently break the updater again.
+             ════════════════════════════════════════════════════════════════ -->
     </channel>
 </rss>

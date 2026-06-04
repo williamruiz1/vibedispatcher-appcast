@@ -1,0 +1,53 @@
+name: appcast-integrity
+
+# Canonical guard (added 2026-06-04): the Sparkle appcast MUST NEVER advertise a
+# release whose download (enclosure) URL does not resolve. On 2026-05-20 a 0.0.7
+# entry was pushed whose DMG was never published — its URL 404'd, so EVERY
+# VibeDispatcher launch failed the update check with "Update Error". This check
+# fails CI the instant the feed advertises an unpublished/404 release, so it can
+# never silently break the updater again.
+
+on:
+  push:
+    paths: ['appcast.xml', '.github/workflows/appcast-integrity.yml']
+  pull_request:
+    paths: ['appcast.xml']
+  schedule:
+    - cron: '17 13 * * *'   # daily — catches a release DMG that gets deleted later
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  verify-enclosure-urls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Every advertised enclosure URL must resolve (no 404 / no phantom release)
+        run: |
+          set -uo pipefail
+          # Pull each <enclosure url="..."> from the appcast.
+          urls=$(grep -oE 'enclosure url="[^"]+"' appcast.xml | sed 's/enclosure url="//;s/"//')
+          if [ -z "$urls" ]; then
+            echo "::error::No enclosure URLs found in appcast.xml — malformed feed."
+            exit 1
+          fi
+          fail=0
+          while IFS= read -r url; do
+            [ -z "$url" ] && continue
+            # GitHub release assets 302 → S3; follow redirects (-L) and accept 200.
+            code=$(curl -sSL -o /dev/null -w '%{http_code}' --max-time 30 "$url" || echo "000")
+            if [ "$code" = "200" ]; then
+              echo "OK   $code  $url"
+            else
+              echo "::error::Advertised release does not resolve ($code): $url"
+              echo "FAIL $code  $url"
+              fail=1
+            fi
+          done <<< "$urls"
+          if [ "$fail" -ne 0 ]; then
+            echo "::error::appcast.xml advertises a release whose download does not resolve. Publish the release DMG, or remove the entry. (See the 2026-05-20 phantom-0.0.7 incident.)"
+            exit 1
+          fi
+          echo "All advertised releases resolve. Feed integrity OK."
