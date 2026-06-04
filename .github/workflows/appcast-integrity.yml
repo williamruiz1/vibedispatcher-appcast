@@ -27,8 +27,11 @@ jobs:
       - name: Every advertised enclosure URL must resolve (no 404 / no phantom release)
         run: |
           set -uo pipefail
+          # NOTE: GitHub Actions runs `run:` with `bash -e`. `grep` exits 1 when
+          # it finds no matches, which would abort the step on an item-less feed
+          # BEFORE the empty-feed check below — so guard the assignment with `|| true`.
           # Pull each <enclosure url="..."> from the appcast.
-          urls=$(grep -oE 'enclosure url="[^"]+"' appcast.xml | sed 's/enclosure url="//;s/"//')
+          urls=$(grep -oE 'enclosure url="[^"]+"' appcast.xml | sed 's/enclosure url="//;s/"//' || true)
           if [ -z "$urls" ]; then
             # An item-less feed is a VALID, intentional state (pre-launch: nothing
             # downloadable advertised → Sparkle reports up-to-date). Pass.
